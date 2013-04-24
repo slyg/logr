@@ -1,0 +1,27 @@
+
+    .revision {
+        animation: fadein 2s;
+        -moz-animation: fadein 2s; /* Firefox */
+        -webkit-animation: fadein 2s; /* Safari and Chrome */
+    }
+    @keyframes fadein {
+        from { background-color: #dff0d8; }
+        to { background-color: inherit; }
+    }
+    @-moz-keyframes fadein { /* Firefox */
+        from { background-color: #dff0d8; }
+        to { background-color: inherit; }
+    }
+    @-webkit-keyframes fadein { /* Safari and Chrome */
+        from { background-color: #dff0d8; }
+        to { background-color: inherit; }
+    }
+    
+    .bugfix { background-color: #999999; }
+    .feature { background-color: #468847; }
+    .optim,
+    .refactoring { background-color: #3a87ad; }
+    .merge { background-color: #333333; }
+    .revert { background-color: #f89406; }
+    
+    .nowrap { white-space: nowrap; }

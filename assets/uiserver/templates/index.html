@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <meta charset="utf-8">
+        <title>logr</title>
+        <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/static/main.css" />
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    </head>
+    <body>
+        <table class="table" ng-controller="RevisionsController">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Message</th>
+                    <th>Author</th>
+                    <th>Date</th>
+                    <th>Rev</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                <tr class="revision" ng-repeat="rev in revisions | orderBy:predicate:reverse | limitTo:50">
+                    <td>
+                        <span class="label {{ rev.type }}">{{ rev.type }}</span>
+                    </td>
+                    <td>{{ rev.msg }}</td>
+                    <td>{{ rev.author }}</td>
+                    <td class="nowrap">{{ rev.date }}</td>
+                    <td>{{ rev.revision }}</td>
+                </tr>
+                
+            </tbody>
+        </table>
+        <script src="/static/main.js"></script>
+    </body>
+</html>

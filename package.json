@@ -1,0 +1,18 @@
+{
+  "name": "logr",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "slyg",
+  "license": "BSD",
+  "dependencies": {
+    "pomelo-schedule": "~0.3.4",
+    "moment": "~2.0.0",
+    "svnlog": "https://github.com/slyg/svnlog/archive/v0.0.4.tar.gz",
+    "q": "~0.9.3",
+    "socket.io": "~0.9.14",
+    "express": "~3.2.0"
+  },
+  "devDependencies" : {
+      "memwatch" : "0.2.2"
+  }
+}

@@ -1,0 +1,17 @@
+{
+    "type": "bugfix",
+    "msg": "bugfix : VNS.track not defined",
+    "dateUTC": "2013-03-29T09:01:07.185236Z",
+    "paths": [
+        {
+            "path": "/viadeo/viadeo-solution/trunk/webapp/viadeo-jsp/src/main/webapp/checkout/premium.jsp",
+            "extension": ".jsp",
+            "action": "M",
+            "kind": "file"
+        }
+    ],
+    "author": "nkuoch",
+    "dateFromNow": "20 days ago",
+    "revision": "145427",
+    "date": "Friday, March 29 2013 10:01 AM"
+}
