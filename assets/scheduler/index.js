@@ -7,7 +7,7 @@ var
 
 var 
     period      = pollerConf.period.split(' '),
-    periodValue = +period[0],
+    periodValue = +period[0], // be sure that type is Number
     periodUnit  = period[1]
 ;
 
@@ -16,7 +16,7 @@ module.exports = {
     
         schedule.scheduleJob(
             {
-                start : Date.now(),
+                start : Date.now() + 3000,
                 period : moment.duration(periodValue, periodUnit).asMilliseconds()
             },
             job

@@ -12,9 +12,12 @@
         $scope.predicate = '-revision';
     
         io.on('global', function(data) {
+            // bindings to update (from outside of angular)
             $scope.$apply(function(){
+                // apply push in the good this context
                 $scope.revisions.push.apply($scope.revisions, data);
             });
+            
         });
         
     }]);
