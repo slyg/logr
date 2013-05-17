@@ -3,7 +3,8 @@ var
     http = require('http'),
     Q = require('q'),
     conf = require('../../conf/webserver'),
-    port = conf.port
+    port = conf.port,
+    addRoutes = require('./routes')
 ;
 
 module.exports = {
@@ -16,10 +17,14 @@ module.exports = {
             deferred = Q.defer()
         ;
         
-        server.listen(port);
+        app.use(app.router);
         app.use('/logr', express.static(__dirname + '/templates'));
         app.use('/static', express.static(__dirname + '/static'));
         app.use('/socket.io', express.static(__dirname + '/static/socket.io')); // socket.io special case
+        
+        addRoutes(app);
+        
+        server.listen(port);
         
         console.log('server running on port ' + port);
         

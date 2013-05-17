@@ -1,26 +1,23 @@
 var 
     Q = require('q'),
-    svnOutput = require('./svnoutput.json'),
+    svnOutput = require('./svnoutput.json')[0],
     countLimit = 5,
     revStart = Date.now()
 ;
 
 module.exports = function(){
     
-    var 
-        deferred = Q.defer(),
-        result = generateCommit()
-    ;
-    
-    setTimeout(function(){ deferred.resolve(result); }, 200);
-    
-    return deferred.promise;
+    return {
+        getRevisions : generateCommits,
+        getLastRevisions : generateCommits
+    };
     
 }
 
-function generateCommit(){
+function generateCommits(){
     
     var 
+        deferred = Q.defer(),
         i = 0,
         result = [],
         count = Math.floor(Math.random() * countLimit)
@@ -39,6 +36,8 @@ function generateCommit(){
     // lets mix for testing
     result.sort(function(xx,yy){ return Math.floor(Math.random() * 3) - 1; });
     
-    return result;
+    setTimeout(function(){ deferred.resolve(result); }, 200);
+    
+    return deferred.promise;
 }
 

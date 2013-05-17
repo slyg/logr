@@ -1,5 +1,5 @@
 var
-    svnlog     = require('./../mock/svnlog'), //require('svnlog'),
+    svnlog     = require('svnlog'), //require('./../mock/svnlog'),
     svnConf    = require('./../../conf/svn.json'),
     Q          = require('q')
 ;
@@ -10,11 +10,12 @@ module.exports = {
     
         var 
             deferred = Q.defer(),
-            lastHeadRevision = svnConf.startRev
+            lastHeadRevision = svnConf.startRev,
+            svn = svnlog(svnConf.repo)
         ;
         
         deferred.resolve(function(){
-            svnlog(lastHeadRevision, 'HEAD', svnConf.repo)
+            svn.getRevisions(lastHeadRevision, 'HEAD')
                 .then(function(revisions){
                 
                     // ordering data depending on revision number
