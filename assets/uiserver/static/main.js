@@ -2,34 +2,39 @@
 
     var app = angular.module('myApp', []);
     
-    app.factory('io', function() {
-        return io.connect(window.location.origin);
+    app.factory('socket', function($rootScope){
+        var socket = io.connect(window.location.origin);
+        return {
+            on: function (eventName, callback) {
+                socket.on(eventName, function () {  
+                    var args = arguments;
+                    $rootScope.$apply(function () {
+                        callback.apply(socket, args);
+                    });
+                });
+            }
+        }
     });
     
-    app.controller('RevisionsController', ['$scope', 'io', '$http', function ($scope, io, $http) {
-        
+    app.controller('RevisionsController', ['$scope', 'socket', '$http', function ($scope, socket, $http) {
+    
+        // set viewModel
         $scope.revisions = [];
-        $scope.predicate = '-revision';
+        $scope.predicate = '-dateUTC';
+            
+        // listen to socket stream
+        socket.on('global', updateData);
         
-        // initial data call
+        
+        // grabb some data on init
         $http({
             url: '/ws/getlastrevisions',
             method: 'GET'
-        }).success(function(data, status){
-            console.log(data);
-            $scope.revisions = data;
-        }).error(function(data, status){
-            console.log('woops');
-        });
-    
-        io.on('global', function(data) {
-            // bindings to update (from outside of angular)
-            $scope.$apply(function(){
-                // apply push in the good this context
-                $scope.revisions.push.apply($scope.revisions, data);
-            });
-            
-        });
+        }).success(updateData).error(console.error);
+        
+        function updateData(data){
+            $scope.revisions.push.apply($scope.revisions, data);
+        }
         
     }]);
     

@@ -14,7 +14,7 @@ module.exports = function(app){
     
         //res.json(require('./../../mock/svnoutput.json'));
         
-        svn.getLastRevisions(10).then(function(commits){
+        svn.getLastRevisions(50).then(function(commits){
         
             commits.sort(function(left, right) { 
                 return (left.revision < right.revision) ? 1 : -1; 

@@ -21,7 +21,7 @@
             </thead>
             <tbody>
             
-                <tr class="revision" ng-repeat="rev in revisions | orderBy:predicate:reverse | limitTo:50">
+                <tr class="revision" ng-repeat="rev in revisions | orderBy:predicate | limitTo:50">
                     <td>
                         <span class="label {{ rev.type }}">{{ rev.type }}</span>
                     </td>
