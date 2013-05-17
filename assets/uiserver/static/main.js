@@ -33,7 +33,26 @@
         }).success(updateData).error(console.error);
         
         function updateData(data){
+        
+            var sanitizedData = deduplicateData($scope.revisions, 'revision');
             $scope.revisions.push.apply($scope.revisions, data);
+        }
+        
+        function deduplicateData(arr, predicate){
+        
+            arr.sort( function(a, b){ return a[predicate] - b[predicate]; } );
+
+            // delete all duplicates from the array
+            for( var i=0; i < arr.length-1; i++ ) {
+              if ( arr[i][predicate] == arr[i+1][predicate] ) {
+                delete arr[i];
+              }
+            }
+            
+            // remove the "undefined entries"
+            arr = arr.filter( function( el ){ return (typeof el !== "undefined"); } );
+            
+            return arr;
         }
         
     }]);
