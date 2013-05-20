@@ -1,7 +1,24 @@
 [
     {
         "type": "bugfix",
-        "msg": "bugfix : VNS.track not defined",
+        "msg": "bugfix : Annoying bug on revision 1001",
+        "dateUTC": "2013-03-28T09:01:07.185236Z",
+        "paths": [
+            {
+                "path": "/viadeo/viadeo-solution/trunk/webapp/viadeo-jsp/src/main/webapp/checkout/premium.jsp",
+                "extension": ".jsp",
+                "action": "M",
+                "kind": "file"
+            }
+        ],
+        "author": "nkuoch",
+        "dateFromNow": "20 days ago",
+        "revision": "145426",
+        "date": "Friday, March 29 2013 10:01 AM"
+    },
+    {
+        "type": "merge",
+        "msg": "merge : merge to trunk",
         "dateUTC": "2013-03-29T09:01:07.185236Z",
         "paths": [
             {
@@ -30,7 +47,7 @@
         ],
         "author": "sfaucherand",
         "dateFromNow": "17 days ago",
-        "revision": "152148",
+        "revision": "145428",
         "date": "Monday, April 02 2013 10:12 AM"
     }
 ]

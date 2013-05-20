@@ -1,8 +1,9 @@
 var 
     Q = require('q'),
+    moment = require('moment'),
     svnOutput = require('./svnoutput.json')[0],
     countLimit = 5,
-    revStart = Date.now()
+    revStart = 145427 //Date.now()
 ;
 
 module.exports = function(){
@@ -28,6 +29,7 @@ function generateCommits(){
         
             commit = (function(){return JSON.parse(JSON.stringify(svnOutput));}())
             commit.revision = revStart++;
+            commit.date = moment(Date.now()).format("dddd, MMMM Do YYYY h:mm A");
             
             result.push(commit);
         }())
