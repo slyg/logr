@@ -10,7 +10,7 @@ module.exports = function(app){
         res.redirect('/logr');
     });
     
-    app.get('/ws/getlastrevisions', function(req, res){
+    app.get('/ws/getlastcommits', function(req, res){
     
         //res.json(require('./../../mock/svnoutput.json'));
         
