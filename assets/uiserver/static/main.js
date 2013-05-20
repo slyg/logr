@@ -20,11 +20,12 @@
     
         // set viewModel
         $scope.commits = [];
+        $scope.predicate = '-revision';/*
         $scope.orderByRevisionsAsc = function(){
             $scope.commits.sort(function(left, right) { 
                 return (left.revision < right.revision) ? 1 : -1; 
             });
-        };
+        };*/
         
         var headRevision = 0;
             
@@ -41,7 +42,13 @@
         function updateData(data){
             
             // filter commits that are already in viewModel (depending on head revision)
-            var sanitizedData = data.filter(function(element){ return (+element.revision > headRevision); });
+            var sanitizedData = data
+                .filter(function(element){ return (+element.revision > headRevision); })
+                .map(function(element){ 
+                    element.revision = +element.revision; // transtype revisions into number
+                    return element;
+                })
+            ;
             
             // add new items to vieModel
             $scope.commits.push.apply($scope.commits, sanitizedData);
