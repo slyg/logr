@@ -16,11 +16,17 @@
         }
     });
     
-    app.controller('RevisionsController', ['$scope', 'socket', '$http', function ($scope, socket, $http) {
+    app.controller('CommitsController', ['$scope', 'socket', '$http', function ($scope, socket, $http) {
     
         // set viewModel
-        $scope.revisions = [];
-        $scope.predicate = '-dateUTC';
+        $scope.commits = [];
+        $scope.orderByRevisionsAsc = function(){
+            $scope.commits.sort(function(left, right) { 
+                return (left.revision < right.revision) ? 1 : -1; 
+            });
+        };
+        
+        var headRevision = 0;
             
         // listen to socket stream
         socket.on('global', updateData);
@@ -28,31 +34,21 @@
         
         // grabb some data on init
         $http({
-            url: '/ws/getlastrevisions',
+            url: '/ws/getlastcommits',
             method: 'GET'
         }).success(updateData).error(console.error);
         
         function updateData(data){
-        
-            var sanitizedData = deduplicateData($scope.revisions, 'revision');
-            $scope.revisions.push.apply($scope.revisions, data);
-        }
-        
-        function deduplicateData(arr, predicate){
-        
-            arr.sort( function(a, b){ return a[predicate] - b[predicate]; } );
-
-            // delete all duplicates from the array
-            for( var i=0; i < arr.length-1; i++ ) {
-              if ( arr[i][predicate] == arr[i+1][predicate] ) {
-                delete arr[i];
-              }
-            }
             
-            // remove the "undefined entries"
-            arr = arr.filter( function( el ){ return (typeof el !== "undefined"); } );
+            // filter commits that are already in viewModel (depending on head revision)
+            var sanitizedData = data.filter(function(element){ return (+element.revision > headRevision); });
             
-            return arr;
+            // add new items to vieModel
+            $scope.commits.push.apply($scope.commits, sanitizedData);
+            
+            // update head revision
+            headRevision = +(data.sort(function(a, b){ return (+b.revision) - (+a.revision) })[0].revision);
+            
         }
         
     }]);

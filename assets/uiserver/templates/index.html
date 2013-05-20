@@ -9,7 +9,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
     </head>
     <body>
-        <table class="table" ng-controller="RevisionsController">
+        <table class="table" ng-controller="CommitsController">
             <thead>
                 <tr>
                     <th>Type</th>
@@ -21,14 +21,14 @@
             </thead>
             <tbody>
             
-                <tr class="revision" ng-repeat="rev in revisions | orderBy:predicate | limitTo:50">
+                <tr class="revision" ng-repeat="commit in commits | orderBy:orderByRevisionsAsc() | limitTo:50">
                     <td>
-                        <span class="label {{ rev.type }}">{{ rev.type }}</span>
+                        <span class="label {{ commit.type }}">{{ commit.type }}</span>
                     </td>
-                    <td>{{ rev.msg }}</td>
-                    <td>{{ rev.author }}</td>
-                    <td class="nowrap">{{ rev.date }}</td>
-                    <td>{{ rev.revision }}</td>
+                    <td>{{ commit.msg }}</td>
+                    <td>{{ commit.author }}</td>
+                    <td class="nowrap">{{ commit.date }}</td>
+                    <td>{{ commit.revision }}</td>
                 </tr>
                 
             </tbody>
