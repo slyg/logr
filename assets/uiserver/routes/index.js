@@ -2,7 +2,7 @@ var
     svnlog  = require('svnlog'),
     svnConf = require('./../../../conf/svn.json'),
     svn     = svnlog(svnConf.repo),
-    uiConf  = require('./../../../conf/webserver.json'),
+    uiConf  = require('./../../../conf/webserver.json')
 ; 
 
 module.exports = function(app){
