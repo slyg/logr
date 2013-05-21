@@ -12,6 +12,7 @@
                         callback.apply(socket, args);
                     });
                 });
+                return this;
             }
         }
     });
@@ -20,18 +21,15 @@
     
         // set viewModel
         $scope.commits = [];
-        $scope.predicate = '-revision';/*
-        $scope.orderByRevisionsAsc = function(){
-            $scope.commits.sort(function(left, right) { 
-                return (left.revision < right.revision) ? 1 : -1; 
-            });
-        };*/
+        $scope.predicate = '-revision';
         
         var headRevision = 0;
             
         // listen to socket stream
-        socket.on('global', updateData);
-        
+        socket
+            .on('global', updateData)
+            .on('ping', function(pong){console.log(pong);})
+        ;
         
         // grabb some data on init
         $http({

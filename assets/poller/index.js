@@ -15,6 +15,9 @@ module.exports = {
         ;
         
         deferred.resolve(function(){
+            
+            broadcaster.heartbeat(); // keep socket connection opened after a few hours
+        
             svn.getRevisions(lastHeadRevision, 'HEAD')
                 .then(function(revisions){
                 

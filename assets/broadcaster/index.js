@@ -19,6 +19,9 @@ module.exports = {
                 if(Array.isArray(data) && data.length > 0){
                     io.sockets.emit('global', data);
                 }
+            }, 
+            heartbeat : function(){
+                io.sockets.emit('ping', 'pong');
             }
         });
         
