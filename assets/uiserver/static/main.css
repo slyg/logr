@@ -1,4 +1,6 @@
 
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak { display: none!important;}
+
     .revision {
         animation: fadein 2s;
         -moz-animation: fadein 2s; /* Firefox */

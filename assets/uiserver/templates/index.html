@@ -5,11 +5,9 @@
         <title>logr</title>
         <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" href="/static/main.css" />
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
     </head>
     <body>
-        <table class="table" ng-controller="CommitsController">
+        <table class="table" ng-controller="CommitsController" ng-cloak>
             <thead>
                 <tr>
                     <th 
@@ -31,9 +29,7 @@
             <tbody>
             
                 <tr class="revision" ng-repeat="commit in commits | orderBy:predicate:reverse | limitTo:100">
-                    <td>
-                        <span class="label {{ commit.type }}">{{ commit.type }}</span>
-                    </td>
+                    <td><span class="label {{ commit.type }}">{{ commit.type }}</span></td>
                     <td>{{ commit.msg }}</td>
                     <td>{{ commit.author }}</td>
                     <td class="nowrap">{{ commit.date }}</td>
@@ -42,6 +38,8 @@
                 
             </tbody>
         </table>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
         <script src="/static/main.js"></script>
     </body>
 </html>
