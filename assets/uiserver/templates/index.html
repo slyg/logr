@@ -12,11 +12,11 @@
         <table class="table" ng-controller="CommitsController">
             <thead>
                 <tr>
-                    <th ng-click="predicate='type';reverse=false" class="simlink">Type</th>
+                    <th ng-click="predicate='type';reverse=!reverse" class="simlink">Type</th>
                     <th>Message</th>
-                    <th ng-click="predicate='author';reverse=false" class="simlink">Author</th>
+                    <th ng-click="predicate='author';reverse=!reverse" class="simlink">Author</th>
                     <th>Date</th>
-                    <th ng-click="predicate='revision';reverse=true" class="simlink">Rev</th>
+                    <th ng-click="predicate='-revision';reverse=!reverse" class="simlink">Rev</th>
                 </tr>
             </thead>
             <tbody>
