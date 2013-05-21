@@ -17,6 +17,8 @@
         to { background-color: inherit; }
     }
     
+    .revision:hover {background-color: #eff1c2;}
+    
     .bugfix { background-color: #999999; }
     .feature { background-color: #468847; }
     .optim,
@@ -24,6 +26,10 @@
     .merge { background-color: #333333; }
     .revert { background-color: #f89406; }
     
-    .simlink {text-decoration: underline; cursor: pointer;}
+    .simlink {cursor: pointer;}
+    .simlink:hover,
+    .currentOrder {background-color: #eee;}
+    .order {display: none;}
+    .currentOrder .order {display: inline;}
     
     .nowrap { white-space: nowrap; }
