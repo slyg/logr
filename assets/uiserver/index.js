@@ -19,8 +19,8 @@ module.exports = {
         
         app.use(app.router);
         app.use('/logr', express.static(__dirname + '/templates'));
-        app.use('/static', express.static(__dirname + '/static'));
-        app.use('/socket.io', express.static(__dirname + '/static/socket.io')); // socket.io special case
+        app.use('/public', express.static(__dirname + '/public'));
+        app.use('/socket.io', express.static(__dirname + '/public/socket.io')); // socket.io special case
         
         addRoutes(app);
         
