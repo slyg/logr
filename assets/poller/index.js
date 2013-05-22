@@ -1,5 +1,5 @@
 var
-    svnlog     = require('svnlog'), //require('./../mock/svnlog'),
+    svnlog     = require('svnlog'), // require('./../mock/svnlog'), 
     svnConf    = require('./../../conf/svn.json'),
     Q          = require('q')
 ;
@@ -23,10 +23,10 @@ module.exports = {
                 
                     // ordering data depending on revision number
                     revisions.sort(function(left, right) { 
-                        return (left.revision < right.revision) ? 1 : -1; 
+                        return (+left.revision) - (+right.revision); 
                     });
                 
-                    var currentLastRevision = revisions[revisions.length-1].revision;
+                    var currentLastRevision = revisions.slice(-1)[0].revision;
                     
                     if(lastHeadRevision == currentLastRevision) {
                         return null;

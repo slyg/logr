@@ -18,7 +18,7 @@ module.exports = function(app){
         svn.getLastRevisions(uiConf.itemsNum).then(function(commits){
         
             commits.sort(function(left, right) { 
-                return (left.revision < right.revision) ? 1 : -1; 
+                return (+left.revision) - (+right.revision);  
             });
         
             res.json(commits);
