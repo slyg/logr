@@ -9,6 +9,12 @@
                 "extension": ".jsp",
                 "action": "M",
                 "kind": "file"
+            },
+            {
+                "path": "/viadeo/viadeo-solution/trunk/webapp/viadeo-jsp/src/main/webapp/checkout/premium2.js",
+                "extension": ".js",
+                "action": "M",
+                "kind": "file"
             }
         ],
         "author": "nkuoch",

@@ -26,10 +26,15 @@
                 </tr>
             </thead>
             <tbody>
-            
                 <tr class="revision" ng-repeat="commit in commits | orderBy:predicate:reverse | limitTo:100">
                     <td><span class="label {{ commit.type }}">{{ commit.type }}</span></td>
-                    <td>{{ commit.msg }}</td>
+                    <td>
+                        <p ng-click="expand = !expand">{{ commit.msg }}</p>
+                        <ul class="paths" ng-class="{true: 'paths-visible', false: ''}[expand]">
+                            <li ng-repeat="path in commit.paths">{{ path.path }}</li>
+                        </ul>
+                        
+                    </td>
                     <td>{{ commit.author }}</td>
                     <td class="nowrap">{{ commit.date }}</td>
                     <td>{{ commit.revision }}</td>

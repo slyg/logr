@@ -3,6 +3,15 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         datetime: Date.now(),
+        watch: {
+            scripts: {
+                files: [
+                    './assets/uiserver/static/*',
+                    './assets/uiserver/templates/*'
+                ],
+                tasks: ['default']
+            },
+        },
         concat: {
             'ngapp' : {
                 src : [
@@ -29,6 +38,7 @@ module.exports = function(grunt) {
     });
     
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     
     // Default task(s).
     grunt.registerTask('default', ['concat:ngapp', 'concat:socket.io', 'concat:styles']);
