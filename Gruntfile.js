@@ -15,6 +15,8 @@ module.exports = function(grunt) {
         concat: {
             'ngapp' : {
                 src : [
+                    './assets/uiserver/static/components/moment/min/moment.min.js',
+                    './assets/uiserver/static/components/moment/min/langs.min.js',
                     './assets/uiserver/static/components/angular/angular.min.js',
                     './assets/uiserver/static/components/ngInfiniteScroll/ng-infinite-scroll.js',
                     './assets/uiserver/static/main.js'
@@ -23,7 +25,7 @@ module.exports = function(grunt) {
             },
             'socket.io' : {
                 src : [
-                    './assets/uiserver/static/components/socket.io/socket.io.js',
+                    './assets/uiserver/static/components/socket.io-client/dist/socket.io.min.js',
                 ], 
                 dest : './assets/uiserver/public/socket.io.js'
             },

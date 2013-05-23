@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ],
+  "dependencies": {
+    "angular": "1.0.6",
+    "bootstrap": "2.3.2",
+    "moment": "2.0.0",
+    "ngInfiniteScroll": "1.0.0",
+    "socket.io-client": "0.9.11"
+  }
+}
