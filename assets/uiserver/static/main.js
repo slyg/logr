@@ -28,11 +28,13 @@
         // set viewModel
         $scope.commits = [];
         $scope.predicate = '-revision';
+        $scope.isConnected = true;
             
         // listen to socket stream
         socket
             .on('global', updateData)
-            .on('ping', function(pong){ console.log(pong); })
+            .on('ping', function(){ $scope.isConnected = true; })
+            .on('disconnect', function(){ $scope.isConnected = false; })
         ;
         
         // grabb some data on init

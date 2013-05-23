@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html ng-app="myApp" ng-controller="CommitsController">
     <head>
         <meta charset="utf-8">
+        <link rel="shortcut icon" id="favicon" href="{{(isConnected) && 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAAA1BMVEXC0V4hofdZAAAADElEQVQImWNgIA0AAAAwAAFDlLdnAAAAAElFTkSuQmCC ' || 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAAA1BMVEWNjY1Ts6ySAAAADElEQVQImWNgIA0AAAAwAAFDlLdnAAAAAElFTkSuQmCC'}}" />
         <title>logr</title>
         <link rel="stylesheet" href="/public/css/ngapp.css" />
     </head>
     <body>
-        <table class="table" ng-controller="CommitsController" ng-cloak>
+        <table class="table" ng-cloak>
             <thead>
                 <tr>
                     <th 
