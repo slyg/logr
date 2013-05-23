@@ -21,7 +21,7 @@ module.exports = function(grunt) {
                     './assets/uiserver/static/components/ngInfiniteScroll/ng-infinite-scroll.js',
                     './assets/uiserver/static/main.js'
                 ], 
-                dest : './assets/uiserver/public/ngapp.js'
+                dest : './assets/uiserver/public/js/ngapp.js'
             },
             'socket.io' : {
                 src : [
@@ -34,7 +34,7 @@ module.exports = function(grunt) {
                     './assets/uiserver/static/components/bootstrap/css/bootstrap.min.css',
                     './assets/uiserver/static/main.css'
                 ],
-                dest : './assets/uiserver/public/ngapp.css'
+                dest : './assets/uiserver/public/css/ngapp.css'
             }
         }
     });
