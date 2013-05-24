@@ -1,11 +1,11 @@
 logr
 ====
 
-#Dependencies : 
+####Dependencies : 
 
 <code>$ npm install</code>
 
-#Starting app :
+####Starting app :
 
 NB : be sure you have all your conf files in <code>conf/</code>
 
