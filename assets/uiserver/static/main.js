@@ -20,9 +20,9 @@
     app.controller('CommitsController', ['$scope', 'socket', '$http', '$timeout', function ($scope, socket, $http, $timeout) {
     
         var 
-            updateCommitAgeDelay = 30000, // commit age update period - 30s
-            updateCommitAge,
-            headRevision = 0;
+            updateCommitAgeDelay = 30000,   // commit age update every 30 seconds
+            updateCommitAge,                // hoisting update function
+            headRevision = 0
         ;
     
         // set viewModel
