@@ -1,7 +1,8 @@
 var
-    svnlog     = require('svnlog'), // require('./../mock/svnlog'), 
+    svnlog     = require('svnlog'), // require('./../mock/svnlog'),
     svnConf    = require('./../../conf/svn.json'),
-    Q          = require('q')
+    Q          = require('q'),
+    format     = require('./../format')
 ;
 
 module.exports = {
@@ -36,6 +37,7 @@ module.exports = {
                     }
                     
                 })
+                .then(format)
                 .then(broadcaster.emit)
             ;
         });
