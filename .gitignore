@@ -2,3 +2,5 @@
 node_modules/
 assets/uiserver/static/components/
 assets/uiserver/public/
+
+npm-debug.log

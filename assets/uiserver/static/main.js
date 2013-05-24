@@ -17,25 +17,42 @@
         }
     });
     
+    app.controller('ConnectionController', ['$scope', 'socket', '$timeout', function ($scope, socket, $timeout) {
+        
+        var 
+            getConnectionStatusDelay = 3000,
+            getConnectionStatus             // hoisting
+        ;
+        
+        $scope.isConnected = true;
+        
+        socket
+            .on('ping', function(){ $scope.isConnected = true; })
+            .on('disconnect', function(){ $scope.isConnected = false; })
+        ;
+        
+        $scope.getConnectionStatus = function(){
+            $scope.isConnected = navigator.onLine;
+            getConnectionStatus = $timeout($scope.getConnectionStatus, getConnectionStatusDelay);
+        }
+        getConnectionStatus = $timeout($scope.getConnectionStatus, getConnectionStatusDelay);
+        
+    }]);
+    
     app.controller('CommitsController', ['$scope', 'socket', '$http', '$timeout', function ($scope, socket, $http, $timeout) {
     
         var 
-            updateCommitAgeDelay = 30000, // commit age update period - 30s
-            updateCommitAge,
-            headRevision = 0;
+            updateCommitAgeDelay = 30000,   // commit age update every 30 seconds
+            updateCommitAge,                // hoisting update function
+            headRevision = 0
         ;
     
         // set viewModel
         $scope.commits = [];
         $scope.predicate = '-revision';
-        $scope.isConnected = true;
             
         // listen to socket stream
-        socket
-            .on('global', updateData)
-            .on('ping', function(){ $scope.isConnected = true; })
-            .on('disconnect', function(){ $scope.isConnected = false; })
-        ;
+        socket.on('global', updateData);
         
         // grabb some data on init
         $http({
