@@ -22,7 +22,9 @@
         var 
             updateCommitAgeDelay = 30000,   // commit age update every 30 seconds
             updateCommitAge,                // hoisting update function
-            headRevision = 0
+            headRevision = 0,
+            getConnectionStatusDelay = 3000,
+            getConnectionStatus             // hoisting
         ;
     
         // set viewModel
@@ -36,6 +38,12 @@
             .on('ping', function(){ $scope.isConnected = true; })
             .on('disconnect', function(){ $scope.isConnected = false; })
         ;
+        
+        $scope.getConnectionStatus = function(){
+            $scope.isConnected = navigator.onLine;
+            getConnectionStatus = $timeout($scope.getConnectionStatus, getConnectionStatusDelay);
+        }
+        getConnectionStatus = $timeout($scope.getConnectionStatus, getConnectionStatusDelay);
         
         // grabb some data on init
         $http({
