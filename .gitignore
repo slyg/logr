@@ -2,3 +2,4 @@
 node_modules/
 conf/svn.json
 assets/uiserver/static/components/
+assets/uiserver/public
