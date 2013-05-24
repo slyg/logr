@@ -17,5 +17,8 @@
     "grunt": "~0.4.1",
     "grunt-contrib-concat": "~0.2.0",
     "grunt-contrib-watch": "~0.4.3"
+  },
+  "scripts" : {
+      "start" : "node index"
   }
 }
