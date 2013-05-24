@@ -11,24 +11,28 @@
             <thead>
                 <tr>
                     <th 
-                        ng-click="predicate='type';reverse=!reverse" 
-                        class="simlink {{(predicate == 'type') && 'currentOrder ' || ''}}"
+                        ng-click="predicate=['type', '-revision'];" 
+                        class="simlink"
                         ><span class="order">{{(reverse) && '&uarr;'|| '&darr;'}} </span>Type</th>
                     <th>Message</th>
+                    <th
+                        ng-click="predicate=['branch', '-revision'];" 
+                        class="simlink"
+                        ><span class="order">{{(reverse) && '&uarr;'|| '&darr;'}} </span>Branch</th>
                     <th 
-                        ng-click="predicate='author';reverse=!reverse" 
-                        class="simlink {{(predicate == 'author') && 'currentOrder ' || ''}}"
-                        ><span class="order">{{(reverse) &&  '&uarr;'|| '&darr;'}} </span>Author</th>
+                        ng-click="predicate=['author', '-revision'];" 
+                        class="simlink"
+                        ><span class="order"></span>Author</th>
                     <th>Date</th>
                     <th 
-                        ng-click="predicate='-revision';reverse=!reverse" 
+                        ng-click="predicate='-revision';" 
                         class="simlink {{(predicate == '-revision') && 'currentOrder ' || ''}}"
                         ><span class="order">{{(reverse) && '&darr;' || '&uarr;'}} </span>Rev</th>
                 </tr>
             </thead>
             <tbody>
                 <tr class="revision" ng-repeat="commit in commits | orderBy:predicate:reverse | limitTo:100">
-                    <td><span class="label {{ commit.type }}">{{ commit.type }}</span></td>
+                    <td class="text-right"><span class="label {{ commit.type }}">{{ commit.type }}</span></td>
                     <td>
                         <p ng-click="expand = !expand">{{ commit.msg }}</p>
                         <ul class="paths" ng-class="{true: 'paths-visible', false: ''}[expand]">
@@ -36,9 +40,10 @@
                         </ul>
                         
                     </td>
-                    <td>{{ commit.author }}</td>
-                    <td class="nowrap">{{ commit.dateFromNow }}</td>
-                    <td>{{ commit.revision }}</td>
+                    <td class="muted">{{ commit.branch }}</td>
+                    <td class="muted">{{ commit.author }}</td>
+                    <td class="nowrap muted">{{ commit.dateFromNow }}</td>
+                    <td class="muted">{{ commit.revision }}</td>
                 </tr>
                 
             </tbody>
