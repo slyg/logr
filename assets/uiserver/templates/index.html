@@ -10,28 +10,16 @@
         <table class="table" ng-controller="CommitsController" ng-cloak>
             <thead>
                 <tr>
-                    <th 
-                        ng-click="predicate=['type', '-revision'];" 
-                        class="simlink"
-                        ><span class="order">{{(reverse) && '&uarr;'|| '&darr;'}} </span>Type</th>
-                    <th>Message</th>
-                    <th
-                        ng-click="predicate=['branch', '-revision'];" 
-                        class="simlink"
-                        ><span class="order">{{(reverse) && '&uarr;'|| '&darr;'}} </span>Branch</th>
-                    <th 
-                        ng-click="predicate=['author', '-revision'];" 
-                        class="simlink"
-                        ><span class="order"></span>Author</th>
-                    <th>Date</th>
-                    <th 
-                        ng-click="predicate='-revision';" 
-                        class="simlink {{(predicate == '-revision') && 'currentOrder ' || ''}}"
-                        ><span class="order">{{(reverse) && '&darr;' || '&uarr;'}} </span>Rev</th>
+                    <th><input type="text" class="input-mini" ng-model="search.type" placeholder="Type" /></th>
+                    <th><span class="title">Message</span></th>
+                    <th><input type="text" class="input-small" ng-model="search.branch" placeholder="Branch" /></th>
+                    <th><input type="text" class="input-small" ng-model="search.author" placeholder="Author" /></th>
+                    <th><span class="title">Date</span></th>
+                    <th><span class="title">&uarr; Rev</span></th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="revision" ng-repeat="commit in commits | orderBy:predicate:reverse | limitTo:100">
+                <tr class="revision" ng-repeat="commit in commits | orderBy:predicate:reverse | filter:search | limitTo:200">
                     <td class="text-right"><span class="label {{ commit.type }}">{{ commit.type }}</span></td>
                     <td>
                         <p ng-click="expand = !expand">{{ commit.msg }}</p>
